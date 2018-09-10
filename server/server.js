@@ -1,5 +1,4 @@
 /* eslint-disable no-console, no-use-before-define */
-
 import Express from 'express'
 import qs from 'qs'
 
@@ -13,8 +12,9 @@ import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 
 import configureStore from '../common/store/configureStore'
-import App from '../common/containers/App'
-import { fetchCounter } from '../common/api/counter'
+import App from '../common/components/App'
+
+import { fetchUSNews } from '../common/api/news'
 
 const app = new Express()
 const port = process.env.PORT || 3000;
@@ -26,13 +26,12 @@ app.use(webpackHotMiddleware(compiler))
 
 const handleRender = (req, res) => {
   // Query our mock API asynchronously
-  fetchCounter(apiResult => {
+  fetchUSNews(apiResult => {
+    console.log("Server side initial fetch completed");
     // Read the counter from the request, if provided
     const params = qs.parse(req.query)
-    const counter = parseInt(params.counter, 10) || apiResult || 0
-
     // Compile an initial state
-    const preloadedState = { counter }
+    const preloadedState = { news: apiResult }
 
     // Create a new Redux store instance
     const store = configureStore(preloadedState)
@@ -56,6 +55,7 @@ const handleRender = (req, res) => {
 app.use(handleRender)
 
 const renderFullPage = (html, preloadedState) => {
+  console.log("*** Inside server.js  renderFullPage function");
   return `
     <!doctype html>
     <html>

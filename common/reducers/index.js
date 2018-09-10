@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import counter from './counter'
+import setNews from './setNews'
 
 const rootReducer = combineReducers({
-  counter
+  news: setNews
 })
 
 export default rootReducer
