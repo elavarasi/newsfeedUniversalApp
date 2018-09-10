@@ -9,31 +9,30 @@ const setNews = (state = initialState, action) => {
   console.log("action: " + JSON.stringify(action));
   switch (action.type) {
     case "SET_US_NEWS":  
-      console.log("inside US" + JSON.stringify(action.payload.news));
+      console.log("inside US" + JSON.stringify(action.payload.articles));
       return action.payload.news;
       break;
     case "SET_UK_NEWS":
-      console.log("inside UK" + JSON.stringify(action.payload.news));
+      console.log("inside UK" + JSON.stringify(action.payload.articles));
       return action.payload.news;
       break;   
     case "SET_AU_NEWS":
-      console.log("inside AU" + JSON.stringify(action.payload.news));
+      console.log("inside AU" + JSON.stringify(action.payload.articles));
       return action.payload.news;
       break;  
     case "SET_FR_NEWS":
-      console.log("inside FR" + JSON.stringify(action.payload.news));
+      console.log("inside FR" + JSON.stringify(action.payload.articles));
       return action.payload.news;
       break; 
     case "SET_JP_NEWS":
-      console.log("inside JP" + JSON.stringify(action.payload.news));
+      console.log("inside JP" + JSON.stringify(action.payload.articles));
       return action.payload.news;
       break; 
     case "SET_CN_NEWS":
-      console.log("inside CN" + JSON.stringify(action.payload.news));
+      console.log("inside CN" + JSON.stringify(action.payload.articles));
       return action.payload.news;
       break; 
     default:
-      console.log("came inside default");
       return state;
       break;
   }

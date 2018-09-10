@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 function NewsContainer({news}) {
+    console.log(news.articles);
     return (
                 <div>
-                    { news.news.map( ( { title, url, description, urlToImage, publishedAt }, indx ) => (
+                    { news.articles.map( ( { title, url, description, urlToImage, publishedAt }, indx ) => (
                         <div className="col-md-6 card" key={indx}>
                              <div className="row card-header mt-2 mr-1 mb-2 ml-1">
                                  <div className="col-md-12">
